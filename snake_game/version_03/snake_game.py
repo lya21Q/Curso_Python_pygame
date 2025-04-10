@@ -8,19 +8,21 @@ def run_game()->None:
     Funcion principal del videojuego..
     :return:
     """
-
     pygame.init()
 
+    #Se configura el reloj del juego:
+    clock=pygame
     #Se inicializa la pantalla.
     screen=pygame.display.set_mode(configurations.get_screen_size())
 
     #Se configura el título del juego.
     pygame.display.set_caption(configurations.get_game_title())
 
-    snake_head=SnakeBlock()
+    snake_head=SnakeBlock(is_head=True)
+    snake_head.snake_head_init()
 
     #Ciclo principal del videojuego
-    game_over=False
+
     #Se verifican los eventos (teclado y ratón) del juego.
     while not game_over:
         game_over=game_events()

@@ -1,3 +1,5 @@
+from pygame.examples.go_over_there import clock
+
 from Configurations import configurations
 import pygame
 
@@ -30,3 +32,6 @@ def screen_refresh(screen:pygame.surface.Surface,snake_head:SnakeBlock)->None:
     snake_head.blit(screen)
     # SE actualiza la pantalla.
     pygame.display.flip()
+
+    #Se controla la velocidad
+    clock.tick(configurations.get_fps())
