@@ -1,20 +1,32 @@
 import pygame
 from pygame.sprite import Sprite
 from Configuration import Configurations
+from random import randint
 
+_no_apples=0
 class Apple(Sprite):
     def __init__(self):
-        super.__init__()
-
-        self.image = pygame.Surface((10,10))
-        self.image.fill((255,0,0,))
+        super().__init__()
+        self.image = pygame.Surface((Configurations.get_apple_block_size(),Configurations.get_apple_block_size()))
+        self.image.fill((Configurations.get_apple_color()))
 
         self.rect = self.image.get_rect()
 
-    def blit(self,screen:pygame.surface.surface)->None:
+    def blit(self,screen:pygame.surface.Surface)->None:
         """
         Se utiliza para dibujar la manzana.
         :param screen:
         :return:
         """
         screen.blit(self.image,self.rect)
+    def random_positions(self)->None:
+        """
+        Se utiliza para inicializar una ubicacion aleatoria d ela manzana
+        :return:
+        """
+        screen_width = Configurations.get_screen_size()[0]
+        screen_height = Configurations.get_screen_size()[1]
+        apple_block_size = Configurations.get_apple_block_size()
+
+        self.rect.x = apple_block_size * randint(0,(screen_width // apple_block_size -1))
+        self.rect.y = apple_block_size * randint(0,(screen_height // apple_block_size -1))

@@ -7,24 +7,23 @@ def game_event(snake_body:pygame.sprite.Group) -> bool:
     Función que administra fps en eventos del juego
     return: La bandera del fin del juego
     """
-
     #Se declara la bandera del fin del juego
     game_over = False
 
-    #Se verifican los eventos de
+    #Se verifican los eventos de (teclado y ratón) del juego.
     for event in pygame.event.get():
-        #Un clic en cerrar el juego
+        #Un clic en cerrar el juego.
         if event.type == pygame.QUIT:
             game_over = True
-
-        if event.type == pygame.KEYDOWN:
+    #El evento es presionar una tecla(KEYDOWN).
+        elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT:
                 SnakeBlock.set_is_moving_right(True)
                 SnakeBlock.set_is_moving_left(False)
                 SnakeBlock.set_is_moving_up(False)
                 SnakeBlock.set_is_moving_down(False)
 
-
+            #MOVIMIENTO HACIA LA IZQUIERDA.
             if event.key == pygame.K_LEFT:
                 SnakeBlock.set_is_moving_right(False)
                 SnakeBlock.set_is_moving_left(True)
@@ -54,12 +53,11 @@ def game_event(snake_body:pygame.sprite.Group) -> bool:
 def snake_movement(snake_body: pygame.sprite.Group) -> None:
     """
     Funcion que gestiona el movimient del cuerpo de la serpiente
-
     :param snake_body:
     :return:
     """
     "Nuevo"
-    body_size =len(snake_body.sprites()) -1
+    body_size = len(snake_body.sprites()) -1
     for i in range(body_size,0, -1):
         snake_body.sprites()[i].rect.x = snake_body.sprites()[i - 1].rect.x
         snake_body.sprites()[i].rect.y = snake_body.sprites()[i-1].rect.y

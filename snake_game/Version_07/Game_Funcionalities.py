@@ -3,7 +3,7 @@ from Configuration import Configurations
 from Snake  import  SnakeBlock
 from Apple import Apple
 
-def game_event(snake_body:pygame.sprite.Group) -> bool:
+def game_events(snake_body:pygame.sprite.Group,apples:pygame.sprite.Group) -> bool:
     """
     Función que administra fps en eventos del juego
     return: La bandera del fin del juego
@@ -44,9 +44,13 @@ def game_event(snake_body:pygame.sprite.Group) -> bool:
                 SnakeBlock.set_is_moving_up(False)
                 SnakeBlock.set_is_moving_down(True)
 
-            if event.key == pygame.K_DELETE:
+            if event.key == pygame.K_SPACE:
                 new_snake_block = SnakeBlock()
                 snake_body.add(new_snake_block)
+
+                new_apple=Apple()
+                new_apple.random_positions()
+                apples.add(new_apple)
 
     #Se regresa la bandera
     return game_over
@@ -79,7 +83,7 @@ def snake_movement(snake_body: pygame.sprite.Group) -> None:
 
 def screen_refresh(screen: pygame.surface.Surface,
                    clock: pygame.time.Clock,
-                   snake_body: pygame.sprite.Group) -> None:
+                   snake_body: pygame.sprite.Group,apples:pygame.sprite.Group) -> None:
     """
     Función que administrar los elementos visuales del juego
     """
@@ -90,7 +94,7 @@ def screen_refresh(screen: pygame.surface.Surface,
     for snake_block in reversed(snake_body.sprites()):
         snake_block.blit(screen)
 
-
+    apples.draw(screen)
 
     pygame.display.flip()
 

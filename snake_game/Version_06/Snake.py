@@ -2,8 +2,8 @@ import pygame
 from pygame.sprite import Sprite
 from Configuration import Configurations
 from random import randint
-class SnakeBlock(Sprite):
 
+class SnakeBlock(Sprite):
     _is_moving_right = False
     _is_moving_left = False
     _is_moving_up = False
@@ -111,6 +111,11 @@ class SnakeBlock(Sprite):
     @classmethod
     def set_is_moving_down(cls, value: bool) -> None:
         """
+    # Para el movimiento de cada bloque de la serpiente, se debe asignar la posición de su bloque predecesor.
+    body_size = len(snake_body.sprites()) - 1
+    for i in range(body_size, 0, -1):
+        snake_body.sprites()[i].rect.x = snake_body.sprites()[i - 1].rect.x
+        snake_body.sprites()[i].rect.y = snake_body.sprites()[i - 1].rect.y
         Setter para la bandera de is_moving_right(cls) -> bool:
         :param cls:
         :return:

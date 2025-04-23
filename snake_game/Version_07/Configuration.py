@@ -15,6 +15,23 @@ class Configurations:
     _snake_body_color = (0, 255, 0)
 
     #Configuracion de la manzana.
+    _apple_color=(255,0,0)
+    _apple_block_size=45
+    @classmethod
+    def get_apple_color(cls)->tuple[int,int,int]:
+        """
+        Getter para _apple_color
+        :return:
+        """
+        return cls._apple_color
+
+    @classmethod
+    def get_apple_block_size(cls)->int:
+        """
+        Getter para _apple_block_size
+        :return:
+        """
+        return cls._apple_block_size
 
     @classmethod
     def get_screen_size(cls) -> tuple[int, int]:

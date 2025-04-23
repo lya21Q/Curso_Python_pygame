@@ -7,7 +7,7 @@ configuraciones del juego
 """
 import pygame
 from Configuration import Configurations
-from Game_Funcionalities import game_event, screen_refresh, snake_movement
+from Game_Funcionalities import game_events,snake_movement,screen_refresh
 from Snake import  SnakeBlock
 from pygame.sprite import Group
 
@@ -43,18 +43,22 @@ def run_game() -> None:
 
     #se crea el bloque inicial de la manzana.
     apple = Apple()
+    apple.random_positions()
+
+    #Se crea un grupo con las manzanas
+    apples=Group()
+    apples.add(apple)
 
     #Ciclo principal de videojuego
     game_over = False
-
     while not game_over:
-        game_over = game_event(snake_body)
+        game_over = game_events(snake_body,apples)
 
         #Se administra el movimiento de la serpiente
         snake_movement(snake_body)
 
         #Se dibujan los elementos gráficos en la pantalla
-        screen_refresh(screen, clock, snake_body)
+        screen_refresh(screen, clock, snake_body,apples)
 
 #Se cierran los eventos
 pygame.quit()
