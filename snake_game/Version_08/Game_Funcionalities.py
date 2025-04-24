@@ -104,7 +104,7 @@ def check_collision(screen: pygame.surface.Surface,
     #e revisa la cndicion de la cabeza  conla serpiente con r
     screen_rect=screen.get_rect()
 
-    if head.rect.right > screen_rect.right or head.rect.right > screen_rect.bottom or screen_rect.bottomleft or screen_rect.bottomright:
+    if head.rect.right > screen_rect.right or head.rect.right > screen_rect.bottom or head.rect.right > screen_rect.bottomleft or screen_rect.bottomright:
         game_over=True
     return game_over
 
