@@ -43,7 +43,8 @@ def run_game() -> None:
 
     #se crea el bloque inicial de la manzana.
     apple = Apple()
-    apple.random_positions()
+    apple.random_positions(snake_body)
+
 
     #Se crea un grupo con las manzanas
     apples=Group()

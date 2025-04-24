@@ -49,9 +49,12 @@ def game_events(snake_body:pygame.sprite.Group,apples:pygame.sprite.Group) -> bo
                 snake_body.add(new_snake_block)
 
                 new_apple=Apple()
-                new_apple.random_positions()
-                apples.add(new_apple)
+                new_apple.random_positions(snake_body)
 
+                #apples.empty()
+                apples.remove(apples.sprites()[0])
+                apples.add(new_apple)
+    #
     #Se regresa la bandera
     return game_over
 
@@ -90,10 +93,10 @@ def screen_refresh(screen: pygame.surface.Surface,
     #Fondo de la pantaña
     screen.fill(Configurations.get_background())
     #Se dibuja el cuerpo de la serpiente
-
     for snake_block in reversed(snake_body.sprites()):
         snake_block.blit(screen)
 
+    #se dibuja l amanzana
     apples.draw(screen)
 
     pygame.display.flip()
