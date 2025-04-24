@@ -106,7 +106,7 @@ def check_collision(screen: pygame.surface.Surface,
 
     if head.rect.right > screen_rect.right or head.rect.left < screen_rect.left or head.rect.bottom > screen_rect.bottom or head.rect.top < screen_rect.top:
         game_over=True
-    return game_over
+        return game_over
 
 
 def screen_refresh(screen: pygame.surface.Surface,

@@ -57,7 +57,8 @@ def run_game() -> None:
 
         #Se administra el movimiento de la serpiente
         snake_movement(snake_body)
-
+        #Se revisan las colisiones en el juego
+        game_over=check_collision(screen,snake_body,apples)
         #se revisan las condicones del juego
         check_collision(screen,snake_body,apples)
         #Se dibujan los elementos gráficos en la pantalla
