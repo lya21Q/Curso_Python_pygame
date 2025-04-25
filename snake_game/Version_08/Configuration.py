@@ -7,6 +7,7 @@ class Configurations:
     _game_title = "Snake game en pygame"
     _background = (234, 137, 154)
     _fps = 8 #fps del juego
+    _game_over_screen_time=4
 
     #Configuraciones de la serpiente
     #Que sea un divisor común con en screen size ⬇️
@@ -58,6 +59,15 @@ class Configurations:
         :return:
         """
         return cls._fps
+
+    @classmethod
+    def get_game_over_screen_time(cls) -> int:
+        """
+        Getter para _fps
+        :return:
+        """
+        return cls._game_over_screen_time
+
     @classmethod
     def get_snake_block_size(cls) -> int:
         return cls._snake_block_size

@@ -7,7 +7,7 @@ configuraciones del juego
 """
 import pygame
 from Configuration import Configurations
-from Game_Funcionalities import game_events,snake_movement,screen_refresh,check_collision
+from Game_Funcionalities import game_events,snake_movement,screen_refresh,check_collision,game_over_screen
 from Snake import  SnakeBlock
 from pygame.sprite import Group
 
@@ -53,16 +53,22 @@ def run_game() -> None:
     #Ciclo principal de videojuego
     game_over = False
     while not game_over:
-        game_over = game_events(snake_body,apples)
+        game_over = game_events()
+        #Condicion de que cerro la ventana
+        if game_over:
+            break
 
         #Se administra el movimiento de la serpiente
         snake_movement(snake_body)
         #Se revisan las colisiones en el juego
         game_over=check_collision(screen,snake_body,apples)
+        #Si ha perdido el jugador se llama a la pantalla de fin de juego.
         #se revisan las condicones del juego
         check_collision(screen,snake_body,apples)
         #Se dibujan los elementos gráficos en la pantalla
         screen_refresh(screen, clock, snake_body,apples)
+        if game_over:
+            game_over_screen()
 
 #Se cierran los eventos
 pygame.quit()
