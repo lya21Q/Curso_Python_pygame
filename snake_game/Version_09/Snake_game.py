@@ -54,6 +54,9 @@ def run_game() -> None:
 
     #Se crea el objero con el fondo de pantalla
     background=Background()
+    #Para el fondo de la manzana
+    apple=Apple()
+
     #Ciclo principal de videojuego
     game_over = False
     while not game_over:

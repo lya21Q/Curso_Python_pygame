@@ -21,6 +21,7 @@ class Configurations:
 
     #Las rutas de los archivos multimedias
     _background_image_path = "../Media/background_image.jpg"
+    _apple1="../Media/apple1.jpg"
 
     @classmethod
     def get_apple_color(cls)->tuple[int,int,int]:
@@ -91,3 +92,10 @@ class Configurations:
         :return:
         """
         return cls._background_image_path
+    @classmethod
+    def get_apple1(cls):
+        """
+        Getter para _apple1
+        :return:
+        """
+        return cls._apple1
