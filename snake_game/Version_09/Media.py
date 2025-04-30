@@ -23,18 +23,3 @@ class Background:
         """
         screen.blit(self.image,self.rect)
 
-class Apple:
-    def __init__(self):
-        apple_image_path = Configurations.get_apple1()
-        self.image=pygame.image.load(apple_image_path)
-        #Se reescala el tamaño de la pantalla
-        head=Configurations.get_screen_size()
-        self.image=pygame.transform.scale(self.image,head)
-
-    def blit(self,head:pygame.surface.Surface):
-        """
-        Paraa dibujar la manzana...
-        :param head:
-        :return:
-        """
-        head.blit(self.image,self.rect)

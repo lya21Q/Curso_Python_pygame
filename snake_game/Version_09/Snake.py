@@ -1,8 +1,10 @@
 import pygame
 from pygame.sprite import Sprite
 from Configuration import Configurations
-from random import randint
+from random import randint,choice
+
 class SnakeBlock(Sprite):
+
 
     _is_moving_right = False
     _is_moving_left = False
@@ -16,13 +18,21 @@ class SnakeBlock(Sprite):
         super().__init__()
 
         if is_head:
-            color = Configurations.get_snake_head_color()
+            #color = Configurations.get_snake_head_color()
+            self.image=pygame.image.load("../media/head1.png")
         else:
-            color  = Configurations.get_snake_body_color()
+            #color  = Configurations.get_snake_body_color()
+            body_images_path=["..//media/body1.png",
+                        "..//media/body2.png",
+                        "..//media/body3.png"]
+            path=choice(body_images_path)
+            self.image=pygame.image.load("../media/body1.png")
 
         snake_block_size = Configurations.get_snake_block_size()
-        self.image = pygame.Surface((snake_block_size, snake_block_size))
-        self.image.fill(color)
+        self.image=pygame.transform.scale(self.image,(snake_block_size,snake_block_size))
+
+        #self.image = pygame.Surface((snake_block_size, snake_block_size))
+        #self.image.fill(color)
 
         self.rect = self.image.get_rect()
 
@@ -31,7 +41,16 @@ class SnakeBlock(Sprite):
         Se utiliza para dibujar el bloque de la serpiente
         param screen: Pantalla en dnde se dibuja
         """
-        screen.blit(self.image, self.rect)
+        angle=0
+        if SnakeBlock.get_is_moving_up():
+            angle=90
+        elif SnakeBlock.get_is_moving_left():
+            angle=180
+        elif SnakeBlock.get_is_moving_down():
+            angle=270
+
+
+        screen.blit(self.rect)
 
     def snake_head_init(self) -> None:
         screen_width = Configurations.get_screen_size()[0]

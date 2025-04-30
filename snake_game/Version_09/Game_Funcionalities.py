@@ -8,7 +8,6 @@ from Apple import Apple
 from Media import Background
 
 
-
 def game_events() -> bool:
     """
     Función que administra fps en eventos del juego
@@ -139,6 +138,7 @@ def screen_refresh(screen: pygame.surface.Surface,
 
     #se dibuja la manzana
     apples.draw(screen)
+
 
     pygame.display.flip()
 

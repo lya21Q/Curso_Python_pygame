@@ -11,9 +11,12 @@ class Apple(Sprite):
     def __init__(self):
         super().__init__()
 
-        self.image = pygame.Surface((Configurations.get_apple_block_size(),Configurations.get_apple_block_size()))
-        self.image.fill((Configurations.get_apple_color()))
+        self.image = pygame.image.load(Configurations.get_apple_image_path())
+        apple_block_size=Configurations.get_apple_block_size()
+        self.image=pygame.transform.scale(self.image,(apple_block_size,apple_block_size))
 
+        #self.image.fill((Configurations.get_apple_color()))
+        apple_block_size=Configurations.get_apple_block_size()
         self.rect = self.image.get_rect()
 
     def blit(self,screen:pygame.surface.Surface)->None:

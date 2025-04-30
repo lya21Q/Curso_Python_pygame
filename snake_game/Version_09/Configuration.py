@@ -21,15 +21,19 @@ class Configurations:
 
     #Las rutas de los archivos multimedias
     _background_image_path = "../Media/background_image.jpg"
-    _apple1="../Media/apple1.jpg"
+    _apple_image_path="../Media/apple1.jpg"
+    _snake_head_image_path="../Media/head1.png"
+    _snake_body_image_path=["../Media/body1.png",
+                            "../Media/body2.png",
+                            "../Media/body3.png"]
 
-    @classmethod
-    def get_apple_color(cls)->tuple[int,int,int]:
-        """
-        Getter para _apple_color
-        :return:
-        """
-        return cls._apple_color
+    #@classmethod
+    #def get_apple_color(cls)->tuple[int,int,int]:
+      #  """
+      #  Getter para _apple_color
+    #    :return:
+     #   """
+   #     return cls._apple_color
 
     @classmethod
     def get_apple_block_size(cls)->int:
@@ -93,9 +97,32 @@ class Configurations:
         """
         return cls._background_image_path
     @classmethod
-    def get_apple1(cls):
+    def get_apple_image_path(cls):
         """
         Getter para _apple1
         :return:
         """
-        return cls._apple1
+        return cls._apple_image_path
+
+    @classmethod
+    def get_apple_image_path(cls):
+        """
+        Getter para _apple1
+        :return:
+        """
+        return cls._apple_image_path
+    @classmethod
+    def get_apple_head_image_path(cls):
+        """
+        Getter para _apple1
+        :return:
+        """
+        return cls._snake_head_image_path
+    @classmethod
+    def get_apple_body_image_path(cls):
+        """
+        Getter para _apple1
+        :return:
+        """
+        return cls._snake_body_image_path
+
