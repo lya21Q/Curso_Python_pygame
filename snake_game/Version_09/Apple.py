@@ -5,18 +5,19 @@ from random import randint
 
 #_no_apples=0
 class Apple(Sprite):
-
+    _no_apples = 0
     #Tributo de clase pata l aplicacipon.
     #-No_Aplples=0
     def __init__(self):
         super().__init__()
+        Apple._no_apples+=1
 
         self.image = pygame.image.load(Configurations.get_apple_image_path())
         apple_block_size=Configurations.get_apple_block_size()
         self.image=pygame.transform.scale(self.image,(apple_block_size,apple_block_size))
 
         #self.image.fill((Configurations.get_apple_color()))
-        apple_block_size=Configurations.get_apple_block_size()
+        #apple_block_size=Configurations.get_apple_block_size()
         self.rect = self.image.get_rect()
 
     def blit(self,screen:pygame.surface.Surface)->None:

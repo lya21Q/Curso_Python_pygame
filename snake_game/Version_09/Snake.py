@@ -49,8 +49,8 @@ class SnakeBlock(Sprite):
         elif SnakeBlock.get_is_moving_down():
             angle=270
 
-
-        screen.blit(self.rect)
+        image_flip = pygame.transform.rotate(self.image,angle)
+        screen.blit(image_flip,self.rect)
 
     def snake_head_init(self) -> None:
         screen_width = Configurations.get_screen_size()[0]

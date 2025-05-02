@@ -7,7 +7,7 @@ class Configurations:
     _game_title = "Snake game en pygame"
     #_background = (234, 137, 154)
     _fps = 8 #fps del juego
-    _game_over_screen_time=4
+    _game_over_screen_time=1
 
     #Configuraciones de la serpiente
     #Que sea un divisor común con en screen size ⬇️
@@ -17,11 +17,11 @@ class Configurations:
 
     #Configuracion de la manzana.
     _apple_color=(255,0,0)
-    _apple_block_size=45
+    _apple_block_size=_snake_block_size
 
     #Las rutas de los archivos multimedias
     _background_image_path = "../Media/background_image.jpg"
-    _apple_image_path="../Media/apple1.jpg"
+    _apple_image_path="../Media/apple1.png"
     _snake_head_image_path="../Media/head1.png"
     _snake_body_image_path=["../Media/body1.png",
                             "../Media/body2.png",
@@ -90,14 +90,14 @@ class Configurations:
         return cls._snake_body_color
 
     @classmethod
-    def get_background_image_path(cls):
+    def get_background_image_path(cls)->str:
         """
         Getter para _background_image_path
         :return:
         """
         return cls._background_image_path
     @classmethod
-    def get_apple_image_path(cls):
+    def get_apple_image_path(cls)->str:
         """
         Getter para _apple1
         :return:
@@ -105,21 +105,14 @@ class Configurations:
         return cls._apple_image_path
 
     @classmethod
-    def get_apple_image_path(cls):
-        """
-        Getter para _apple1
-        :return:
-        """
-        return cls._apple_image_path
-    @classmethod
-    def get_apple_head_image_path(cls):
+    def get_apple_head_image_path(cls)->str:
         """
         Getter para _apple1
         :return:
         """
         return cls._snake_head_image_path
     @classmethod
-    def get_apple_body_image_path(cls):
+    def get_apple_body_image_path(cls)->list[str]:
         """
         Getter para _apple1
         :return:
