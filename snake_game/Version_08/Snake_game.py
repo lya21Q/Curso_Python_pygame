@@ -62,11 +62,15 @@ def run_game() -> None:
         snake_movement(snake_body)
         #Se revisan las colisiones en el juego
         game_over=check_collision(screen,snake_body,apples)
+        #Se dibujan los elementos graficos en la pantalla.
+        screen_refresh(screen,clock,snake_body,apples)
+
         #Si ha perdido el jugador se llama a la pantalla de fin de juego.
         #se revisan las condicones del juego
-        check_collision(screen,snake_body,apples)
+        #check_collision(screen,snake_body,apples)
         #Se dibujan los elementos gráficos en la pantalla
-        screen_refresh(screen, clock, snake_body,apples)
+        #screen_refresh(screen, clock, snake_body,apples)
+
         if game_over:
             game_over_screen()
 

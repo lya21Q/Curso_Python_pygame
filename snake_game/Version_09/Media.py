@@ -22,4 +22,3 @@ class Background:
         :return:
         """
         screen.blit(self.image,self.rect)
-
