@@ -5,7 +5,7 @@ import pygame
 from Configuration import Configurations
 from Snake  import  SnakeBlock
 from Apple import Apple
-from Media import Background
+from Media import Background,Audio,Scoreboard
 
 
 def game_events() -> bool:
@@ -79,7 +79,7 @@ def snake_movement(snake_body: pygame.sprite.Group) -> None:
 
 def check_collision(screen: pygame.surface.Surface,
                     snake_body: pygame.sprite.Group,
-                    apples:pygame.sprite.Group)->bool:
+                    apples:pygame.sprite.Group,audio:Audio,scoreboard:Scoreboard)->bool:
     """
     Funcion que revisa las colisiones del juego:
     *cabeza de la serpiente con el cuerpo
@@ -117,27 +117,33 @@ def check_collision(screen: pygame.surface.Surface,
         new_apple=Apple()
         new_apple.random_positions(snake_body)
         apples.add(new_apple)
+
+        """NUEVO."""
+        # Se reproduce el sonido de que la serpiente ha comido la manzana.
+        audio.play_eats_apple_sound()
+
     return game_over
 
 
 def screen_refresh(screen: pygame.surface.Surface,
                    clock: pygame.time.Clock,
-                   snake_body: pygame.sprite.Group,apples:pygame.sprite.Group,background:Background) -> None:
+                   snake_body: pygame.sprite.Group,apples:pygame.sprite.Group,background:Background,scoreboarrd:Scoreboard) -> None:
     """
     Función que administrar los elementos visuales del juego
     """
     #Se dibuja el fondo
     background.blit(screen)
-    snake_body.sprites()[0].animate_head()
 
+    #Fondo de la pantaña
+    #screen.fill(Configurations.get_background())
 
-    "Nuevooo"
     #Se dibuja el cuerpo de la serpiente
     for snake_block in reversed(snake_body.sprites()):
         snake_block.blit(screen)
 
     #se anima el movimiento de la manzana
     apples.sprites()[0].animate_apple()
+
     #se dibuja la manzana
     apples.draw(screen)
 
@@ -147,9 +153,18 @@ def screen_refresh(screen: pygame.surface.Surface,
     #Se controla la velocidad de FPS
     clock.tick(Configurations.get_fps())
 
-def game_over_screen()->None:
+"""CAMBIO. Ahora recibe el objeto con el audio del juego."""
+def game_over_screen(audio: Audio) -> None:
     """
-    Función que muestra con la parte del fin del jugo
-    :return:
+    Función con la pantalla del fin del juego.
+    :param audio: Objeto con el audio del juego.
     """
+    """NUEVO."""
+    # Se realiza un desvanecimiento de la música y se reproduce el sonido de fin del juego.
+    audio.music_fadeout(time = Configurations.get_music_fadeout_time())
+    audio.play_game_over_sound()
+
+    # Se agrega una pausa para que el usuario se dé cuenta de que ha perdido.
     time.sleep(Configurations.get_game_over_screen_time())
+
+    game_over_image=

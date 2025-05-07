@@ -24,12 +24,24 @@ class Configurations:
     _apple_images_path=["../Media/apple1.png","../Media/apple2.png","../Media/apple3.png","../Media/apple4.png"]
     _snake_head_images_path=["../Media/head1.png","../Media/head2.png","../Media/head3.png","../Media/head4.png",
                             "../Media/head5.png","../Media/head6.png","../Media/head7.png","../Media/head8.png"]
-
     _snake_body_image_path=["../Media/body1.png",
                             "../Media/body2.png",
                             "../Media/body3.png"]
-    #_game_over_images_path=["../Media/game_over_image","../Media/game_over_image_1"]
+    """Nuevo"""
+    #Configuracion de la musica del juego.
+    _music_volume = 0.25                           # Volumen de la música de fondo (valor entre 0 y 1).
+    _music_fadeout_time = _game_over_screen_time * 1000  # Duración del desvanecimiento de la música (en ms).
 
+    """NUEVO."""
+    # Rutas de los audios utilizados en la clase Audio.
+    _music_path = "../Media/music.mp3"
+    _start_sound_path = "../Media/start_sound.wav"
+    _eats_apple_sound_path = "../Media/eats_apple_sound.wav"
+    _game_over_sound_path = "../Media/game_over_sound.wav"
+
+
+
+    #_game_over_images_path=["../Media/game_over_image","../Media/game_over_image_1"]
     #@classmethod
     #def get_apple_color(cls)->tuple[int,int,int]:
       #  """
@@ -106,9 +118,9 @@ class Configurations:
         :return:
         """
         return cls._apple_images_path
-    "Nuevoo"
+
     @classmethod
-    def get_head_images_path(cls)->list:
+    def get_apple_head_images_path(cls)->list:
         """
         Getter para _apple1
         :return:
@@ -130,4 +142,46 @@ class Configurations:
        # return cls._game_over_images_path
 
 
+    """NUEVO. Se agregaron los métodos de acceso."""
+    @classmethod
+    def get_music_volume(cls) -> float:
+        """
+        Getter para _music_volume.
+        """
+        return cls._music_volume
+
+    @classmethod
+    def get_music_fadeout_time(cls) -> int:
+        """
+        Getter para _music_fadeout_time.
+        """
+        return cls._music_fadeout_time
+
+    @classmethod
+    def get_music_path(cls) -> str:
+        """
+        Getter para _music_path.
+        """
+        return cls._music_path
+
+    @classmethod
+    def get_start_sound_path(cls) -> str:
+        """
+        Getter para _start_sound_path.
+        """
+        return cls._start_sound_path
+
+    @classmethod
+    def get_eats_apple_sound_path(cls) -> str:
+        """
+        Getter para _eats_apple_sound_path.
+        """
+        return cls._eats_apple_sound_path
+
+    @classmethod
+    def get_game_over_sound_path(cls) -> str:
+        """
+        Getter para _game_over_sound_path.
+        """
+        return cls._game_over_sound_path
 

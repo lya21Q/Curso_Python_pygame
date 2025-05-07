@@ -1,8 +1,9 @@
-
 import pygame
 from pygame.sprite import Sprite
 from Configuration import Configurations
 from random import randint
+
+
 
 #_no_apples=0
 class Apple(Sprite):
@@ -74,7 +75,7 @@ class Apple(Sprite):
         #time_to_refresh=Configurations.get_time_to_refresh_apple_frames()
         time_to_refresh=1000
 
-        needs_refresh=(current_time - self._last_update_time)>=time_to_refresh
+        needs_refresh= (current_time - self._last_update_time) >= time_to_refresh
 
         if needs_refresh:
             self.image = self._apple_frames[self._frame_index]
@@ -84,4 +85,5 @@ class Apple(Sprite):
 
             if self._frame_index >= len(self._apple_frames):
                 self._frame_index=0
+
 

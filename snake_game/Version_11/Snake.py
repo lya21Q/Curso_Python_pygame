@@ -31,20 +31,10 @@ class SnakeBlock(Sprite):
         snake_block_size = Configurations.get_snake_block_size()
         self.image=pygame.transform.scale(self.image,(snake_block_size,snake_block_size))
 
-        #self.image = pygame.Surface((snake_block_size, snake_block_size))
-        #self.image.fill(color)
+        #self.image=pygame.scale(self.image,()
+
 
         self.rect = self.image.get_rect()
-
-
-
-
-
-
-
-
-
-
 
     def blit(self, screen: pygame.surface.Surface) -> None:
         """
