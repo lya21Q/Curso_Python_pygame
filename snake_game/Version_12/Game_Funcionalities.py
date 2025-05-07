@@ -5,7 +5,7 @@ import pygame
 from Configuration import Configurations
 from Snake  import  SnakeBlock
 from Apple import Apple
-from Media import Background,Audio,Scoreboard
+from Media import Background,Audio,Scoreboard,GameOverImage
 
 
 def game_events() -> bool:
@@ -167,4 +167,6 @@ def game_over_screen(audio: Audio) -> None:
     # Se agrega una pausa para que el usuario se dé cuenta de que ha perdido.
     time.sleep(Configurations.get_game_over_screen_time())
 
-    game_over_image=
+    game_over_image=GameOverImage()
+    game_over_image.blit(screen)
+    pygame.display.flip()
