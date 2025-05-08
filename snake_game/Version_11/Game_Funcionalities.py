@@ -79,7 +79,7 @@ def snake_movement(snake_body: pygame.sprite.Group) -> None:
 
 def check_collision(screen: pygame.surface.Surface,
                     snake_body: pygame.sprite.Group,
-                    apples:pygame.sprite.Group,audio:Audio)->bool:
+                    apples:pygame.sprite.Group,audio: Audio)->bool:
     """
     Funcion que revisa las colisiones del juego:
     *cabeza de la serpiente con el cuerpo

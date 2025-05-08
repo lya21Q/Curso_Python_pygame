@@ -34,13 +34,13 @@ class Audio:
         pygame.mixer.music.load(Configurations.get_music_path())
 
         # Se carga el sonido de inicio.
-        self._start_sound = pygame.mixer.Sound(Configurations.get_start_sound_path())
+        self._start_sound= pygame.mixer.Sound(Configurations.get_start_sound_path())
 
         # Se carga el sonido cuando la serpiente come una manzana.
         self._eats_apple_sound = pygame.mixer.Sound(Configurations.get_eats_apple_sound_path())
 
         # Se carga el sonido cuando el jugador ha perdido.
-        self._game_over_sound = pygame.mixer.Sound(Configurations.get_game_over_sound_path())
+        self._game_over_sounds = pygame.mixer.Sound(Configurations.get_game_over_sound_path())
 
     @classmethod
     def play_music(cls, volume) -> None:
@@ -74,4 +74,4 @@ class Audio:
         """
         Se utiliza para reproducir el sonido cuando el jugador ha perdido.
         """
-        self._game_over_sound.play()
+        self._game_over_sounds.play()
