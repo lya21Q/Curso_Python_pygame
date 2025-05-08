@@ -134,9 +134,7 @@ def screen_refresh(screen: pygame.surface.Surface,
     #Se dibuja el fondo
     background.blit(screen)
 
-    #Fondo de la pantaña
-    #screen.fill(Configurations.get_background())
-
+    snake_body.sprites()[0].animate_snake_head()
     #Se dibuja el cuerpo de la serpiente
     for snake_block in reversed(snake_body.sprites()):
         snake_block.blit(screen)

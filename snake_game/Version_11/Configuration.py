@@ -39,17 +39,6 @@ class Configurations:
     _eats_apple_sound_path = "../Media/eats_apple_sound.wav"
     _game_over_sound_path = "../Media/game_over_sound.wav"
 
-
-
-    #_game_over_images_path=["../Media/game_over_image","../Media/game_over_image_1"]
-    #@classmethod
-    #def get_apple_color(cls)->tuple[int,int,int]:
-      #  """
-      #  Getter para _apple_color
-    #    :return:
-     #   """
-   #     return cls._apple_color
-
     @classmethod
     def get_apple_block_size(cls)->int:
         """
@@ -120,7 +109,7 @@ class Configurations:
         return cls._apple_images_path
 
     @classmethod
-    def get_apple_head_images_path(cls)->list:
+    def get_head_images_path(cls)->list:
         """
         Getter para _apple1
         :return:
@@ -133,13 +122,6 @@ class Configurations:
         :return:
         """
         return cls._snake_body_image_path
-    #@classmethod
-    #def get_game_over_images_path(cls)->list:
-     #   """
-      #  Getter para _apple1
-       # :return:
-       # """
-       # return cls._game_over_images_path
 
 
     """NUEVO. Se agregaron los métodos de acceso."""

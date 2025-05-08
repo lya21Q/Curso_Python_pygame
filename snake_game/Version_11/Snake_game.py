@@ -14,11 +14,6 @@ from Media import Background,Audio
 
 from Apple import Apple
 
-
-
-#from Snake_game.Version_0_5.Game_Functionalities import snake_movement
-
-
 def run_game() -> None:
     """
     Función principal del videojuego
@@ -75,7 +70,7 @@ def run_game() -> None:
         #Se administra el movimiento de la serpiente
         snake_movement(snake_body)
         #Se revisan las colisiones en el juego
-        game_over=check_collision(screen,snake_body,apples,)
+        game_over=check_collision(screen,snake_body,apples,audio)
         #Si ha perdido el jugador se llama a la pantalla de fin de juego.
         #se revisan las condicones del juego
         check_collision(screen,snake_body,apples,audio)

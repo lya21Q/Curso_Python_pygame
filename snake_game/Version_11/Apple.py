@@ -34,6 +34,7 @@ class Apple(Sprite):
         self.image= self._apple_frames[0]
 
         self.rect = self.image.get_rect()
+
     def blit(self,screen:pygame.surface.Surface)->None:
         """
         Se utiliza para dibujar la manzana.
@@ -62,12 +63,9 @@ class Apple(Sprite):
                     break
                 else:
                     repeat = False
-    #@classmethod
-    #def:get_no_apples
 
     def animate_apple(self)->None:
         """
-
         :param cls:
         :return:
         """
