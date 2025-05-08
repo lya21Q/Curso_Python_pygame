@@ -27,12 +27,12 @@ class SnakeBlock(Sprite):
                 frame = pygame.transform.scale(frame, (apple_block_size, apple_block_size))
                 self._head_frames.append(frame)
 
-            self._last_update_time = pygame.time.get_ticks()
-            self._frame_index = 1
-            self.image = self._head_frames[0]
+                self._last_update_time = pygame.time.get_ticks()
+                self._frame_index = 1
+                self.image = self._head_frames[0]
 
-            snake_block_size = Configurations.get_snake_block_size()
-            self.image = pygame.transform.scale(self.image, (snake_block_size, snake_block_size))
+                snake_block_size = Configurations.get_snake_block_size()
+                self.image = pygame.transform.scale(self.image, (snake_block_size, snake_block_size))
         else:
             #color  = Configurations.get_snake_body_color()
             body_images_path=["../Media/body1.png",
@@ -41,8 +41,8 @@ class SnakeBlock(Sprite):
             path=choice(body_images_path)
             self.image=pygame.image.load(path)
 
-        snake_block_size = Configurations.get_snake_block_size()
-        self.image=pygame.transform.scale(self.image,(snake_block_size,snake_block_size))
+            snake_block_size = Configurations.get_snake_block_size()
+            self.image=pygame.transform.scale(self.image,(snake_block_size,snake_block_size))
 
 
         self.rect = self.image.get_rect()
