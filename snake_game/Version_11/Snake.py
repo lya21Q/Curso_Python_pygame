@@ -70,26 +70,6 @@ class SnakeBlock(Sprite):
 
         self.rect.x = snake_block_size * randint(0,(screen_width // snake_block_size -1))
         self.rect.y = snake_block_size * randint(0,(screen_height // snake_block_size -1))
-    def animate_snake_head(self)->None:
-        """
-
-        :param cls:
-        :return:
-        """
-        current_time=pygame.time.get_ticks()
-        #time_to_refresh=Configurations.get_time_to_refresh_apple_frames()
-        time_to_refresh=1000
-
-        needs_refresh=(current_time - self._last_update_time)>=time_to_refresh
-
-        if needs_refresh:
-            self.image = self._head_frames[self._frame_index]
-
-            self._last_update_time = current_time
-            self._frame_index += 1
-
-            if self._frame_index >= len(self._head_frames):
-                self._frame_index=0
 
     @classmethod
     def get_is_moving_right(cls) -> bool:
@@ -166,3 +146,24 @@ class SnakeBlock(Sprite):
         :return:
         """
         cls._is_moving_down = value
+
+    def animate_snake_head(self)->None:
+        """
+
+        :param cls:
+        :return:
+        """
+        current_time=pygame.time.get_ticks()
+        #time_to_refresh=Configurations.get_time_to_refresh_apple_frames()
+        time_to_refresh=1000
+
+        needs_refresh=(current_time - self._last_update_time)>=time_to_refresh
+
+        if needs_refresh:
+            self.image = self._head_frames[self._frame_index]
+
+            self._last_update_time = current_time
+            self._frame_index += 1
+
+            if self._frame_index >= len(self._head_frames):
+                self._frame_index=0
