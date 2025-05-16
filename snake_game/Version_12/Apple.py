@@ -62,8 +62,9 @@ class Apple(Sprite):
                     break
                 else:
                     repeat = False
-    #@classmethod
-    #def:get_no_apples
+    @classmethod
+    def get_no_apples(cls):
+        return cls._no_apples
 
     def animate_apple(self)->None:
         """

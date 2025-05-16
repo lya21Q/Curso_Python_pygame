@@ -83,7 +83,7 @@ class Scoreboard:
     def __init__(self):
         self._typeface="kimono"
         self._font_size=40
-        self._font_color=(171,250)
+        self._font_color=(171,250,10)
         #se agrega la imagen con el score.
         self._font=pygame.font.SysFont(self._typeface,self._font_size)
         self.image=self._font.render("Puntos:0",True,self._font_color)
@@ -113,4 +113,4 @@ class GameOverImage:
     def blit(self,screen: pygame.surface.Surface)->None:
         self.rect.centerx=screen.get_rect().centerx
         self.rect.bottom=screen.get_rect().bottom-Configurations.get_snake_block_size()
-        self.blit(self.image,self.rect)
+        screen.blit(self.image,self.rect)

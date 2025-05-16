@@ -55,7 +55,7 @@ def run_game() -> None:
     #Se crea el objeto con el fondo de pantalla
     background=Background()
     #Para el fondo de la manzana
-    apple=Apple()
+    #apple=Apple()
 
     """NUEVO."""
     # Se crea el objeto con el sonido del juego y se reproduce la música y el sonido inicial del juego.
@@ -63,7 +63,7 @@ def run_game() -> None:
     audio.play_music(volume = Configurations.get_music_volume())
     audio.play_star_sound()
 
-    scoreboard=Scoreboard
+    scoreboard=Scoreboard()
 
     #Ciclo principal de videojuego
     game_over = False
@@ -76,14 +76,14 @@ def run_game() -> None:
         #Se administra el movimiento de la serpiente
         snake_movement(snake_body)
         #Se revisan las colisiones en el juego
-        game_over=check_collision(screen,snake_body,apples,audio)
+        game_over=check_collision(screen,snake_body,apples,audio,scoreboard)
         #Si ha perdido el jugador se llama a la pantalla de fin de juego.
         #se revisan las condicones del juego
-        check_collision(screen,snake_body,apples,audio)
+        #check_collision(screen,snake_body,apples,audio)
         #Se dibujan los elementos gráficos en la pantalla
-        screen_refresh(screen, clock, snake_body,apples,background)
+        screen_refresh(screen, clock, snake_body,apples,background,scoreboard)
         if game_over:
-            game_over_screen(audio)
+            game_over_screen(audio,screen)
     #Se cierran los eventos
     pygame.quit()
 

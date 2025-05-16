@@ -1,8 +1,5 @@
-from pygame.examples.go_over_there import clock
-
 from Configurations import configurations
 import pygame
-
 from snake import SnakeBlock
 
 def game_events()->bool:
@@ -21,7 +18,7 @@ def game_events()->bool:
 
     return game_over
 
-def screen_refresh(screen:pygame.surface.Surface,snake_head:SnakeBlock)->None:
+def screen_refresh(screen:pygame.surface.Surface,clock:pygame.time.Clock,snake_head:SnakeBlock)->None:
     """
     Función que administra los elementos visuales del juego.
     :return:

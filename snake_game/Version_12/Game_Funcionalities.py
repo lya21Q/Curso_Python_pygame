@@ -117,6 +117,7 @@ def check_collision(screen: pygame.surface.Surface,
         new_apple=Apple()
         new_apple.random_positions(snake_body)
         apples.add(new_apple)
+        scoreboard.update(Apple.get_no_apples()-1)
 
         """NUEVO."""
         # Se reproduce el sonido de que la serpiente ha comido la manzana.
@@ -127,7 +128,7 @@ def check_collision(screen: pygame.surface.Surface,
 
 def screen_refresh(screen: pygame.surface.Surface,
                    clock: pygame.time.Clock,
-                   snake_body: pygame.sprite.Group,apples:pygame.sprite.Group,background:Background,scoreboarrd:Scoreboard) -> None:
+                   snake_body: pygame.sprite.Group,apples:pygame.sprite.Group,background:Background,scoreboard:Scoreboard) -> None:
     """
     Función que administrar los elementos visuales del juego
     """
@@ -146,7 +147,7 @@ def screen_refresh(screen: pygame.surface.Surface,
 
     #se dibuja la manzana
     apples.draw(screen)
-
+    scoreboard.blit(screen)
 
     pygame.display.flip()
 
@@ -154,7 +155,7 @@ def screen_refresh(screen: pygame.surface.Surface,
     clock.tick(Configurations.get_fps())
 
 """CAMBIO. Ahora recibe el objeto con el audio del juego."""
-def game_over_screen(audio: Audio) -> None:
+def game_over_screen(audio: Audio,screen) -> None:
     """
     Función con la pantalla del fin del juego.
     :param audio: Objeto con el audio del juego.
@@ -164,9 +165,8 @@ def game_over_screen(audio: Audio) -> None:
     audio.music_fadeout(time = Configurations.get_music_fadeout_time())
     audio.play_game_over_sound()
 
-    # Se agrega una pausa para que el usuario se dé cuenta de que ha perdido.
-    time.sleep(Configurations.get_game_over_screen_time())
-
     game_over_image=GameOverImage()
     game_over_image.blit(screen)
     pygame.display.flip()
+    # Se agrega una pausa para que el usuario se dé cuenta de que ha perdido.
+    time.sleep(Configurations.get_game_over_screen_time())

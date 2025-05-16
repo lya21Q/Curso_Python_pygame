@@ -7,7 +7,7 @@ class Configurations:
     _game_title = "Snake game en pygame"
     #_background = (234, 137, 154)
     _fps = 8 #fps del juego
-    _game_over_screen_time=1
+    _game_over_screen_time=5
 
     #Configuraciones de la serpiente
     #Que sea un divisor común con en screen size ⬇️

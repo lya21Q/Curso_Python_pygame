@@ -73,6 +73,7 @@ class Apple(Sprite):
         #time_to_refresh=Configurations.get_time_to_refresh_apple_frames()
         time_to_refresh=1000
 
+
         needs_refresh= (current_time - self._last_update_time) >= time_to_refresh
 
         if needs_refresh:
