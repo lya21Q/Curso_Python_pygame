@@ -1,5 +1,6 @@
-from Configurations import configurations
+from Configurations import Configurations
 import pygame
+"""NUEVO."""
 from snake import SnakeBlock
 
 def game_events()->bool:
@@ -18,17 +19,23 @@ def game_events()->bool:
 
     return game_over
 
-def screen_refresh(screen:pygame.surface.Surface,clock:pygame.time.Clock,snake_head:SnakeBlock)->None:
+"""CAMBIO. Ahora recibe los objetos clock y snake_head."""
+def screen_refresh(screen: pygame.surface.Surface, clock: pygame.time.Clock,
+                   snake_head: SnakeBlock) -> None:
     """
-    Función que administra los elementos visuales del juego.
-    :return:
+    Función que administra los elementos de la pantalla.
+    :param screen: Objeto con la pantalla.
+    :param clock: Objeto con el reloj del videojuego.
+    :param snake_head: Objeto con la cabeza de la serpiente.
     """
-    # Se dibujan los elementos gráficos en la pantalla.
-    screen.fill(configurations.get_background())
-    #Se dibuja la cabeza de la serpiente.
-    snake_head.blit(screen)
-    # SE actualiza la pantalla.
+    # Se dibujan los elementos en la pantalla.
+    screen.fill(Configurations.get_background())    # Fondo de la pantalla en formato RGB.
+    """NUEVO."""
+    snake_head.blit(screen)                         # Se dibuja la cabeza de la serpiente.
+
+    # Se actualiza la pantalla, dando la impresión de movimiento.
     pygame.display.flip()
 
-    #Se controla la velocidad
-    clock.tick(configurations.get_fps())
+    """NUEVO."""
+    # Se controla la velocidad de fotogramas (FPS) del videojuego.
+    clock.tick(Configurations.get_fps())
