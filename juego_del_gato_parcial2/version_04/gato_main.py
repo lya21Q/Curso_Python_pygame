@@ -1,5 +1,5 @@
 """
-Nombre: Jennifer Marlene Gutiérrez Beteta
+Nombre: ROSALINDA AQUINO PEREZ
 Fecha: [Agrega la fecha aquí]
 Juego: Gato
 Versión: 0.1
