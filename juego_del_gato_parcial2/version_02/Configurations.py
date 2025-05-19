@@ -32,3 +32,5 @@ class Configurations():
         Getter para _background
         """
         return cls._background
+
+""""""

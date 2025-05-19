@@ -4,7 +4,6 @@ def run_game()->None:
     Funcion principal del videojuego..
     :return:
     """
-
     pygame.init()
 
     #Se inicializa la pantalla.
@@ -36,3 +35,4 @@ def run_game()->None:
 
 if __name__=="__main__":
     run_game()
+""""""
