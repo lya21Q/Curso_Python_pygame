@@ -49,3 +49,30 @@ def screen_refresh(screen: pygame.surface.Surface,clock: pygame.time.Clock,backg
 
     # Se controla la velocidad de FPS
     clock.tick(Configurations.get_fps())
+
+
+def check_winner(marks_group):
+    # Diccionario con las marcas en cada celda
+    board = {}  # {1: "X", 2: "O", ..., 9: "X"}
+
+    for mark in marks_group:
+        board[mark.cell_number] = mark.turn  # Usamos el atributo turn que tiene "X" u "O"
+
+    # Posibles combinaciones ganadoras
+    winning_combinations = [
+        (1, 2, 3), (4, 5, 6), (7, 8, 9),  # Horizontales
+        (1, 4, 7), (2, 5, 8), (3, 6, 9),  # Verticales
+        (1, 5, 9), (3, 5, 7)  # Diagonales
+    ]
+    # Verificar si hay un ganador
+    for combo in winning_combinations:
+        a, b, c = combo
+        if board.get(a) and board.get(a) == board.get(b) == board.get(c):
+            return True, board[a]  # Ganó 'X' o 'O'
+
+    # Si todas las celdas están llenas y no hay ganador, es empate
+    if len(board) == 9:
+        return True, "draw"
+
+    # Si no hay ganador ni empate, el juego sigue
+    return False, ""
