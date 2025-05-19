@@ -1,6 +1,7 @@
+import time
 import pygame
 from Configurations import Configurations
-from media import Background,Turnlmage
+from media import Background,TurnImage,ResultsImage,CreditsImage
 from TicTacToeMark import TicTacToeMark
 
 def game_events(marks_group,turn_image)-> bool:
@@ -32,7 +33,7 @@ def game_events(marks_group,turn_image)-> bool:
     # Se regresa  la bandera.
     return game_over
 
-def screen_refresh(screen: pygame.surface.Surface,clock: pygame.time.Clock,background: Background,marks_group,turn_image:Turnlmage)-> None:
+def screen_refresh(screen: pygame.surface.Surface,clock: pygame.time.Clock,background: Background,marks_group,turn_image:TurnImage)-> None:
     """
     Función que administra los elementos visuales del juego.
     """
@@ -56,7 +57,7 @@ def check_winner(marks_group):
     board = {}  # {1: "X", 2: "O", ..., 9: "X"}
 
     for mark in marks_group:
-        board[mark.cell_number] = mark.turn  # Usamos el atributo turn que tiene "X" u "O"
+        board[mark.numero_celda] = mark.turno  # Usamos el atributo turn que tiene "X" u "O"
 
     # Posibles combinaciones ganadoras
     winning_combinations = [
@@ -76,3 +77,28 @@ def check_winner(marks_group):
 
     # Si no hay ganador ni empate, el juego sigue
     return False, ""
+
+
+def game_over_screen(screen: pygame.surface.Surface, clock: pygame.time.Clock, background: Background, marks_group,
+                     turn_image: TurnImage, resultado: str):
+
+    results_image = ResultsImage(resultado)
+    credits_image = CreditsImage()
+
+    numero_parpadeos = 5  # Número de parpadeos
+    parpadeos = 0.5  # Tiempo entre parpadeos en segundos
+
+    for i in range(numero_parpadeos):
+        # Mostrar resultado
+        screen_refresh(screen, clock, background, marks_group, turn_image)
+        results_image.blit(screen)
+
+        # Redibujar pantalla
+        screen_refresh(screen, clock, background, marks_group, turn_image)
+
+    # Mostrar pantalla final con créditos
+    screen_refresh(screen, clock, background, marks_group, turn_image)
+    credits_image.blit(screen)
+    results_image.blit(screen)
+    pygame.display.flip()
+    time.sleep(3)
