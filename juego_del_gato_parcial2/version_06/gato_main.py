@@ -29,15 +29,11 @@ def run_game() -> None:
     marks = Group()
 
     game_over = False
+    resultado= " "
     while not game_over:
-        #Verificar si hay un ganador o empate despues de los eventos.
-        if len(marks)>=5:
-            game_over,resultado=check_winner(marks)
-            if game_over:
-                return True
-        game_over = game_events(marks,turn_image)
+        game_over=game_events(marks,turn_image)
+        game_over,resultado=check_winner(marks)
         screen_refresh(screen, clock, background, marks,turn_image)
-
     pygame.quit()
 
 if __name__ == '__main__':

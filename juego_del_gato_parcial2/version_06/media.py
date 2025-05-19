@@ -26,8 +26,6 @@ class Turnlmage:
         pygame.init()
         self.turnX = pygame.image.load("../media/turnX.png")
         self.turnO = pygame.image.load("../media/turnO.png")
-        self.image=self.turnX
-        self.cambiar_imagen="X"
 
         # Escalar las imágenes a tamaño adecuado
         self.turnX = pygame.transform.scale(self.turnX, (800, 180))
@@ -50,3 +48,17 @@ class Turnlmage:
         screen.blit(self.image, self.rect)
 
 
+class ResultsImage:
+    def __init__(self):
+        pygame.init()
+
+        self.gano_X=pygame.image.load("..//media/winX.png")
+        self.gano_O=pygame.image.load("..//media/winX.png")
+        self.fue_empate=pygame.image.load("../media/draw.png")
+
+
+class CreditsImage:
+    def __init__(self):
+        pygame.init()
+
+        self.credits_image=pygame.image.load("../media/")

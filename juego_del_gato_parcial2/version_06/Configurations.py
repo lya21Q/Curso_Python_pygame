@@ -15,8 +15,12 @@ class Configurations:
     #_markX_image_path = "../media/markX.png"
     _turnO_image = "../media/turnO.png"
     _turnX_image = "../media/turnX.png"
-    _winO = "../media/turnO.png"
-    _winX = "../media/turnX.png"
+
+
+    _winX_image = "../media/turnO.png"
+    _winO_image = "../media/turnX.png"
+
+
     # Posixiones de acuerdo a las teclas.
     _key_to_cell = {
         pygame.K_q: 1, pygame.K_w: 2, pygame.K_e: 3,
@@ -52,6 +56,13 @@ class Configurations:
     @classmethod
     def get_background_image_path(cls) -> str:
         return cls._background_image_path
+    @classmethod
+    def get_win_image_(cls):
+        return cls._winX_image
+
+    @classmethod
+    def get_winO_image_(cls):
+        return cls._winO_image
 
     @classmethod
     def get_key_to_cell(cls) -> dict:
