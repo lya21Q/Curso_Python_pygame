@@ -160,6 +160,7 @@ def game_over_screen(audio: Audio,screen) -> None:
     Función con la pantalla del fin del juego.
     :param audio: Objeto con el audio del juego.
     """
+
     """NUEVO."""
     # Se realiza un desvanecimiento de la música y se reproduce el sonido de fin del juego.
     audio.music_fadeout(time = Configurations.get_music_fadeout_time())

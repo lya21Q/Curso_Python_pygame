@@ -6,10 +6,11 @@ Versión: 0.1
 """
 
 import pygame
+from pygame.examples.music_drop_fade import volume
 from pygame.sprite import Group
 from Configurations import Configurations
-from Game_funcionalities import screen_refresh, game_events
-from media import Background,Turnlmage
+from Game_funcionalities import screen_refresh, game_events,check_winner,game_over_screen
+from media import Background,TurnImage,Audio
 
 def run_game() -> None:
     """
@@ -24,15 +25,28 @@ def run_game() -> None:
     #Imagen de fondo
     background = Background()
     #imagen de turno.
-    turn_image=Turnlmage()
+    turn_image=TurnImage()
     #Grupo para las marcas
     marks = Group()
 
-    game_over = False
-    while not game_over:
-        game_over = game_events(marks,turn_image)
-        screen_refresh(screen, clock, background, marks,turn_image)
+    """Para el Audio"""
+    audio=Audio()
+    audio.play_music(0.25)
 
+
+
+    game_over = False
+    resultado= " "
+    while not game_over:
+        #procesa eventos teclado y ratom
+        game_over = game_events(marks, turn_image,audio)
+        #dibuja los elementos
+        screen_refresh(screen, clock, background, marks, turn_image)
+
+        winner_flag,resultado=check_winner(marks)
+        if winner_flag:
+            game_over_screen(screen,clock, background, marks, turn_image, resultado,audio)
+            game_over=True
     pygame.quit()
 
 if __name__ == '__main__':

@@ -1,9 +1,10 @@
+import time
 import pygame
 from Configurations import Configurations
-from media import Background,Turnlmage
+from media import Background,TurnImage,ResultsImage,CreditsImage,Audio
 from TicTacToeMark import TicTacToeMark
 
-def game_events(marks_group,turn_image)-> bool:
+def game_events(marks_group,turn_image,audio:Audio)-> bool:
     """
     Función que administra los eventos del juego.
     :return: La bandera del fin del juego.
@@ -19,6 +20,7 @@ def game_events(marks_group,turn_image)-> bool:
         elif event.type == pygame.KEYDOWN:
             cell = key_map.get(event.key)
             if cell:
+                audio.keyboard_sound()
                 #Si se presiona la tecla correspondiente y la casilla  no esta ocupada.
                 celda_ocupada=True
                 for mark in marks_group:
@@ -32,7 +34,7 @@ def game_events(marks_group,turn_image)-> bool:
     # Se regresa  la bandera.
     return game_over
 
-def screen_refresh(screen: pygame.surface.Surface,clock: pygame.time.Clock,background: Background,marks_group,turn_image:Turnlmage)-> None:
+def screen_refresh(screen: pygame.surface.Surface,clock: pygame.time.Clock,background: Background,marks_group,turn_image:TurnImage)-> None:
     """
     Función que administra los elementos visuales del juego.
     """
@@ -56,7 +58,7 @@ def check_winner(marks_group):
     board = {}  # {1: "X", 2: "O", ..., 9: "X"}
 
     for mark in marks_group:
-        board[mark.cell_number] = mark.turn  # Usamos el atributo turn que tiene "X" u "O"
+        board[mark.numero_celda] = mark.turno  # Usamos el atributo turn que tiene "X" u "O"
 
     # Posibles combinaciones ganadoras
     winning_combinations = [
@@ -76,3 +78,40 @@ def check_winner(marks_group):
 
     # Si no hay ganador ni empate, el juego sigue
     return False, ""
+
+
+def game_over_screen(screen: pygame.surface.Surface, clock: pygame.time.Clock, background: Background, marks_group,
+                     turn_image: TurnImage, resultado: str,audio:Audio):
+
+    results_image = ResultsImage(resultado)
+    credits_image = CreditsImage()
+
+    for i in range(3):
+        # Mostrar resultado
+        screen_refresh(screen, clock, background, marks_group, turn_image)
+        results_image.blit(screen)
+        pygame.display.flip()
+        pygame.time.wait(500)
+        # Redibujar pantalla
+        screen_refresh(screen, clock, background, marks_group, turn_image)
+        pygame.display.flip()
+        pygame.time.wait(500)
+
+
+    credits_image.blit(screen)
+    pygame.display.flip()
+    pygame.time.wait(550)
+
+
+    """NUEVO."""
+    # Se realiza un desvanecimiento de la música y se reproduce el sonido de fin del juego.
+    audio.music_fadeout(time = Configurations.get_music_fadeout_time())
+    audio.keyboard_sound()
+
+    # Mostrar pantalla final con créditos
+    screen_refresh(screen, clock, background, marks_group, turn_image)
+    credits_image.blit(screen)
+    results_image.blit(screen)
+    pygame.display.flip()
+    # Se agrega una pausa para que el usuario se dé cuenta de que ha perdido.
+    time.sleep(Configurations.get_game_over_screen_time())
