@@ -21,7 +21,7 @@ class Background:
         Se utiliza para dibujar el fondo de pantalla.
         """
         screen.blit(self.image, self.rect)
-class Turnlmage:
+class TurnImage:
     def __init__(self):
         pygame.init()
         self.turnX = pygame.image.load("../media/turnX.png")
@@ -49,16 +49,31 @@ class Turnlmage:
 
 
 class ResultsImage:
-    def __init__(self):
-        pygame.init()
+    def __init__(self,resultado):
+        if resultado == 'X':
+            self.image = pygame.image.load(Configurations.get_winX_image())
+        elif resultado == 'O':
+            self.image = pygame.image.load(Configurations.get_winO_image())
+        else:
+            self.image = pygame.image.load(Configurations.get_draw_image())
 
-        self.gano_X=pygame.image.load("..//media/winX.png")
-        self.gano_O=pygame.image.load("..//media/winX.png")
-        self.fue_empate=pygame.image.load("../media/draw.png")
+       # self.image = pygame.transform.scale(pygame.image.load(self.image), (800, 200))
+        self.rect = self.image.get_rect(center=(640, 360))
 
+
+    def blit(self, screen):
+        screen.blit(self.image, self.rect)
 
 class CreditsImage:
     def __init__(self):
-        pygame.init()
+        """
+        Carga la imagen de los créditos.
+        """
+        self.image = pygame.image.load(Configurations.get_creditos_image())
+        self.image = pygame.transform.scale(self.image, (800, 300))
+        screen_rect = pygame.display.get_surface().get_rect()
+        self.rect = self.image.get_rect(bottom=screen_rect.bottom)
 
-        self.credits_image=pygame.image.load("../media/")
+    def blit(self, screen: pygame.surface.Surface):
+
+        screen.blit(self.image, self.rect)

@@ -17,9 +17,12 @@ class Configurations:
     _turnX_image = "../media/turnX.png"
 
 
-    _winX_image = "../media/turnO.png"
-    _winO_image = "../media/turnX.png"
+    _winX_image = "../media/winX.png"
+    _winO_image = "../media/winO.png"
 
+
+    _draw_image="../media/draw.png"
+    _creditos_image="../media/credits_image.png"
 
     # Posixiones de acuerdo a las teclas.
     _key_to_cell = {
@@ -53,16 +56,25 @@ class Configurations:
     def get_fps(cls) -> int:
         return cls._fps
 
+
     @classmethod
     def get_background_image_path(cls) -> str:
         return cls._background_image_path
+
     @classmethod
-    def get_win_image_(cls):
+    def get_winX_image(cls)->str:
         return cls._winX_image
 
     @classmethod
-    def get_winO_image_(cls):
+    def get_winO_image(cls)->str:
         return cls._winO_image
+    @classmethod
+    def get_draw_image(cls)->str:
+        return cls._draw_image
+    @classmethod
+    def get_creditos_image(cls)->str:
+        return cls._creditos_image
+
 
     @classmethod
     def get_key_to_cell(cls) -> dict:
