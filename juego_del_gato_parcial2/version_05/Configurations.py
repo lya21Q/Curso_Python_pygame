@@ -16,7 +16,7 @@ class Configurations:
     _turnO_image = "../media/turnO.png"
     _turnX_image = "../media/turnX.png"
 
-    # Posixiones de acuerdo a las teclas.
+    # Posiciones de acuerdo a las teclas.
     _key_to_cell = {
         pygame.K_q: 1, pygame.K_w: 2, pygame.K_e: 3,
         pygame.K_a: 4, pygame.K_s: 5, pygame.K_d: 6,

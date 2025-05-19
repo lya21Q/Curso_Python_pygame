@@ -31,6 +31,7 @@ class TicTacToeMark(Sprite):
             #markO_image_path= Configurations.get_markO_image_path()
             self.image = pygame.image.load("../media/markO.png")
             TicTacToeMark.turno = 'X'
+
         self.image = pygame.transform.scale(self.image, (80, 80))  # ajusta al tamaño adecuado
         self.rect = self.image.get_rect()  # luego calculamos rect
         self.rect.center = Configurations.get_position(numero_celda)

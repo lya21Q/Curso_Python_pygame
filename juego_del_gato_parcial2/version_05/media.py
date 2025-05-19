@@ -1,10 +1,10 @@
 import pygame
 from Configurations import Configurations
+
 class Background:
     """
     Clase que contiene el fondo de pantalla.
     """
-
     def __init__(self):
         background_image_path = Configurations.get_background_image_path()
         self.image = pygame.image.load(background_image_path)
@@ -21,13 +21,12 @@ class Background:
         Se utiliza para dibujar el fondo de pantalla.
         """
         screen.blit(self.image, self.rect)
-class Turnlmage:
+
+class TurnImage:
     def __init__(self):
         pygame.init()
         self.image_X = pygame.image.load("../media/turnX.png")
         self.image_O = pygame.image.load("../media/turnO.png")
-        self.image=self.image_X
-        self.cambiar_imagen="X"
 
         # Escalar las imágenes a tamaño adecuado
         self.turnX = pygame.transform.scale(self.image_X, (800, 180))

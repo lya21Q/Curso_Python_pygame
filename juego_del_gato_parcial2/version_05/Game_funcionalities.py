@@ -1,6 +1,6 @@
 import pygame
 from Configurations import Configurations
-from media import Background,Turnlmage
+from media import Background,TurnImage
 from TicTacToeMark import TicTacToeMark
 
 def game_events(marks_group,turn_image)-> bool:
@@ -32,15 +32,16 @@ def game_events(marks_group,turn_image)-> bool:
     # Se regresa  la bandera.
     return game_over
 
-def screen_refresh(screen: pygame.surface.Surface,clock: pygame.time.Clock,background: Background,marks_group,turn_image:Turnlmage)-> None:
+def screen_refresh(screen: pygame.surface.Surface, clock: pygame.time.Clock, background: Background, marks_group, turn_image:TurnImage)-> None:
     """
     Función que administra los elementos visuales del juego.
     """
     # Se dibuja el fondo de la pantalla.
-
     background.blit(screen)
+
     # Se dibujan las marcas
     marks_group.draw(screen)
+
     #se dibujan los turnos
     turn_image.blit(screen)
 

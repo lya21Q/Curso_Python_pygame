@@ -9,7 +9,7 @@ import pygame
 from pygame.sprite import Group
 from Configurations import Configurations
 from Game_funcionalities import screen_refresh, game_events
-from media import Background,Turnlmage
+from media import Background,TurnImage
 
 def run_game() -> None:
     """
@@ -19,12 +19,13 @@ def run_game() -> None:
 
     screen = pygame.display.set_mode(Configurations.get_screen_size())
     pygame.display.set_caption(Configurations.get_game_title())
+    ##Reloj del juego
     clock = pygame.time.Clock()
 
     #Imagen de fondo
     background = Background()
     #imagen de turno.
-    turn_image=Turnlmage()
+    turn_image=TurnImage()
     #Grupo para las marcas
     marks = Group()
 
