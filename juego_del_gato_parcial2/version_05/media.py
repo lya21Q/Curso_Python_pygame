@@ -35,7 +35,6 @@ class TurnImage:
         # Inicialmente muestra el turno X
         self.image = self.turnX
         self.rect = self.image.get_rect()
-        #self.rect.topleft = (560,180)  # Puedes cambiar la posición
         self.rect.centerx = 1280 // 2  # Centrado horizontal
         self.rect.top = 20  # Posición vertical superior
 
