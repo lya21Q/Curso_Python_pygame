@@ -8,7 +8,7 @@ Versión: 0.1
 import pygame
 from pygame.sprite import Group
 from Configurations import Configurations
-from Game_funcionalities import screen_refresh, game_events,check_winner
+from Game_funcionalities import screen_refresh, game_events
 from media import Background,Turnlmage
 
 def run_game() -> None:
@@ -30,11 +30,6 @@ def run_game() -> None:
 
     game_over = False
     while not game_over:
-        #Verificar si hay un ganador o empate despues de los eventos.
-        if len(marks)>=5:
-            game_over,resultado=check_winner(marks)
-            if game_over:
-                return True
         game_over = game_events(marks,turn_image)
         screen_refresh(screen, clock, background, marks,turn_image)
 

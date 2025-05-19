@@ -25,12 +25,12 @@ class Background:
 class TurnImage:
     def __init__(self):
         pygame.init()
-        self.image_X = pygame.image.load("../media/turnX.png")
-        self.image_O = pygame.image.load("../media/turnO.png")
+        self.turnX = pygame.image.load("../media/turnX.png")
+        self.turnO = pygame.image.load("../media/turnO.png")
 
         # Escalar las imágenes a tamaño adecuado
-        self.turnX = pygame.transform.scale(self.image_X, (800, 180))
-        self.turnO = pygame.transform.scale(self.image_O, (800, 180))
+        self.turnX = pygame.transform.scale(self.turnX, (800, 180))
+        self.turnO = pygame.transform.scale(self.turnO, (800, 180))
 
         # Inicialmente muestra el turno X
         self.image = self.turnX
@@ -41,9 +41,9 @@ class TurnImage:
 
     def change_turn(self,current_turn:str):
         if current_turn == "X":
-            self.image = self.image_O  # Cambiar a ⭘
+            self.image = self.turnO # Cambiar a ⭘
         else:
-            self.image = self.image_X  # Cambiar a x
+            self.image = self.turnX  # Cambiar a x
 
     def blit(self, screen: pygame.surface.Surface):
         screen.blit(self.image, self.rect)

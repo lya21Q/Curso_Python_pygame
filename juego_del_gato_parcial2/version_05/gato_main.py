@@ -4,7 +4,6 @@ Fecha: [Agrega la fecha aquí]
 Juego: Gato
 Versión: 0.1
 """
-
 import pygame
 from pygame.sprite import Group
 from Configurations import Configurations
