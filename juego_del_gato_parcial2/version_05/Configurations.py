@@ -13,6 +13,8 @@ class Configurations:
     _background_image_path = "../media/background_image.png"
     #_markO_image_path = "../media/markO.png"
     #_markX_image_path = "../media/markX.png"
+    _turnO_image = "../media/turnO.png"
+    _turnX_image = "../media/turnX.png"
 
     # Posixiones de acuerdo a las teclas.
     _key_to_cell = {
