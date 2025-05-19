@@ -27,7 +27,7 @@ class Configurations:
 
     """Nuevo"""
     #Configuracion de la musica del juego.
-    _music_volume = 0.25                           # Volumen de la música de fondo (valor entre 0 y 1).
+    _music_volume = 0.95                          # Volumen de la música de fondo (valor entre 0 y 1).
     _music_fadeout_time = _game_over_screen_time * 1000  # Duración del desvanecimiento de la música (en ms).
 
     _keyboad_sound= "..//media/keyboard_sound.mp3"

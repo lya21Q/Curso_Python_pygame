@@ -31,7 +31,7 @@ def run_game() -> None:
 
     """Para el Audio"""
     audio=Audio()
-    audio.play_music(0.25)
+    audio.play_music(0.75)
 
 
 
@@ -44,9 +44,12 @@ def run_game() -> None:
         screen_refresh(screen, clock, background, marks, turn_image)
 
         winner_flag,resultado=check_winner(marks)
+        #audio.results_sounds()
         if winner_flag:
+            audio.results_sounds()
             game_over_screen(screen,clock, background, marks, turn_image, resultado,audio)
             game_over=True
+
     pygame.quit()
 
 if __name__ == '__main__':
