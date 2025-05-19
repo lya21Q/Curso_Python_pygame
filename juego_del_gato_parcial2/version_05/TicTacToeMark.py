@@ -41,3 +41,8 @@ class TicTacToeMark(Sprite):
         """
         screen.blit(self.image, self.rect)
 
+    def get_cell_number(self) -> int:
+        """
+        Método de acceso para obtener el número de celda donde está esta marca.
+        """
+        return self.numero_celda
