@@ -16,4 +16,4 @@ class Soldier(Sprite):
         :param screen:
         :return:
         """
-        screen.blit.image
+        screen.blit(self.image.blit())
