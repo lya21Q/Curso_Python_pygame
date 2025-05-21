@@ -1,6 +1,4 @@
 import pygame
-from pygame.sprite import Sprite
-
 from configurations import Configurations
 class Background:
     def __init__(self):
@@ -20,7 +18,3 @@ class Background:
         """
         screen.blit(self.image,self.rect)
 
-class Soldier(Sprite):
-    def __init__(self):
-
-        soldado_image = Configurations.get_soldado_image_path()
