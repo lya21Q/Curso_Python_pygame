@@ -3,10 +3,13 @@ class Configurations():
     _game_Title="Soldiers_vs_aliens"
     #_background=(255,153,121)
     _fps=8
+    #Tamaño del soldado
+    _soldier_block_size=70
     """Fondo de pantalla"""
     _background_image_path="../media/fondo.png"
     """IMAGEN SOLDADO"""
     _soldado_image_path= "../media/soldado.png"
+    _game_over_screen_time = 1
 #__-------------------------METODOS DE ACCESO----------------
     @classmethod
     def get_screen_size(cls)->tuple[int,int]:
@@ -46,3 +49,18 @@ class Configurations():
       :return:
       """
       return cls._soldado_image_path
+
+    @classmethod
+    def get_soldier_block_size(cls)->int:
+        """
+        getter para _soldier_block_size
+        :return:
+        """
+        return cls._soldier_block_size
+    @classmethod
+    def get_game_over_screen_time(cls) -> int:
+        """
+        Getter para _fps
+        :return:
+        """
+        return cls._game_over_screen_time

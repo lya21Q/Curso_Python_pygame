@@ -2,6 +2,8 @@ import pygame
 from game_funcionalities import game_events,screen_refresh
 from Media import Background
 from configurations import Configurations
+from Goldier import Soldier
+from pygame.sprite import Group
 
 def run_game():
     """Funcion principal del videojuego."""
@@ -13,6 +15,12 @@ def run_game():
 
     #Titulo del juego
     pygame.display.set_caption(Configurations.get_game_title())
+
+    #Se crea el grupo para almacenar al soldado.
+    soldier=Soldier()
+    soldier=Group()
+    soldier.add(soldier)
+
     background=Background()
     #Ciclo principal del juego.
 
@@ -21,7 +29,7 @@ def run_game():
         game_over=game_events()
         if game_over:
             break
-        screen_refresh(screen,clock,background)
+        screen_refresh(screen,clock,background,soldier)
 
     pygame.quit()
 

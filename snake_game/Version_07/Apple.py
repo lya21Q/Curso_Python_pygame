@@ -5,9 +5,6 @@ from random import randint
 
 _no_apples=0
 class Apple(Sprite):
-
-    #Tributo de clase pata l aplicacipon.
-    -No_Aplples=0
     def __init__(self):
         super().__init__()
 

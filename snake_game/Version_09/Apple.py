@@ -27,6 +27,7 @@ class Apple(Sprite):
         :return:
         """
         screen.blit(self.image,self.rect)
+
     def random_positions(self,snake_body:pygame.sprite.Group)->None:
         """
         Se utiliza para inicializar una ubicacion aleatoria d ela manzana
