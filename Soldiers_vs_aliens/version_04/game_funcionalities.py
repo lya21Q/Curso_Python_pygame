@@ -14,6 +14,14 @@ def game_events()->bool:
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
             game_over=True
+            for event in pygame.event.get():
+                if event.type == pygame.KEYUP:
+                    if event.key == pygame.K_UP:
+                        Soldier.is_moving_up = False
+                        if event.key == pygame.KEYDOWN:
+                            Soldier.is_moving_down = True
+
+
     return game_over
 
 def screen_refresh(screen: pygame.surface.Surface,
