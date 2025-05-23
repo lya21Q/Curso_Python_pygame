@@ -18,8 +18,8 @@ def run_game():
 
     #Se crea el grupo para almacenar al soldado.
     soldier=Soldier()
-    soldier=Group()
-    soldier.add(soldier)
+    soldiers=Group()
+    soldier.add(soldiers)
 
     background=Background()
     #Ciclo principal del juego.
@@ -29,7 +29,7 @@ def run_game():
         game_over=game_events()
         if game_over:
             break
-        screen_refresh(screen,clock,background,soldier)
+        screen_refresh(screen,clock,background,soldiers)
 
     pygame.quit()
 
