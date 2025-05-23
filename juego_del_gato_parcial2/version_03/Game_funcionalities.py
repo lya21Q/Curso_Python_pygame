@@ -1,5 +1,4 @@
 import time
-
 from Configurations import Configurations
 import pygame
 from media import Background

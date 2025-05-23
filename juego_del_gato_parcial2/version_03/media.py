@@ -1,9 +1,7 @@
 import pygame
 from Configurations import Configurations
-
 class Background:
     """
-
     """
     def __init__(self):
         background_image=Configurations.get_background_image_path()

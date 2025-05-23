@@ -1,5 +1,4 @@
 import pygame
-
 from Configurations import Configurations
 from Game_funcionalities import game_events, screen_refresh
 from media import Background

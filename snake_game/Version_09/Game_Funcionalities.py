@@ -128,20 +128,14 @@ def screen_refresh(screen: pygame.surface.Surface,
     """
     #Se dibuja el fondo
     background.blit(screen)
-
     #Fondo de la pantaña
     #screen.fill(Configurations.get_background())
-
     #Se dibuja el cuerpo de la serpiente
     for snake_block in reversed(snake_body.sprites()):
         snake_block.blit(screen)
-
     #se dibuja la manzana
     apples.draw(screen)
-
-
     pygame.display.flip()
-
     #Se controla la velocidad de FPS
     clock.tick(Configurations.get_fps())
 
