@@ -2,7 +2,7 @@ import time
 import pygame
 from Media import Background
 from configurations import Configurations
-from Goldier import Soldier
+from Soldier import Soldier
 
 def game_events()->bool:
     """

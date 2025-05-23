@@ -2,7 +2,7 @@ import pygame
 from game_funcionalities import game_events,screen_refresh
 from Media import Background
 from configurations import Configurations
-from Goldier import Soldier
+from Soldier import Soldier
 from pygame.sprite import Group
 
 def run_game():
