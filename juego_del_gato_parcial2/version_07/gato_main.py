@@ -6,7 +6,6 @@ Versión: 0.1
 """
 
 import pygame
-from pygame.examples.music_drop_fade import volume
 from pygame.sprite import Group
 from Configurations import Configurations
 from Game_funcionalities import screen_refresh, game_events,check_winner,game_over_screen
