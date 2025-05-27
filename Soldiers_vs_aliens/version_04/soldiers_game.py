@@ -7,29 +7,28 @@ from pygame.sprite import Group
 
 def run_game():
     """Funcion principal del videojuego."""
+
+    #Se inicializa el módulo de pygame...
     pygame.init()
-    clock=pygame.time.Clock()
-    #Se inicializa la pantalla.
-    #screen_size=(1200,700)
-    screen=pygame.display.set_mode(Configurations.get_screen_size())
+    screen_size=Configurations.get_screen_size()
+    screen=pygame.display.set_mode(screen_size)
+    clock = pygame.time.Clock()#Se utiliza para la velocidad de fotogramas(FPS).
 
-    #Titulo del juego
-    pygame.display.set_caption(Configurations.get_game_title())
+    #Título del juego
+    game_title=Configurations.get_game_title()
+    pygame.display.set_caption(game_title)
 
-    #Se crea el grupo para almacenar al soldado.
-    soldier=Soldier()
-    soldiers=Group()
-    soldier.add(soldiers)
+    #Se crea el objeto de fondo de pantalla.
+    background = Background()
 
-    background=Background()
+    #Se crea el objeto del soldado.
+    soldier=Soldier(screen)
+
     #Ciclo principal del juego.
-
     game_over=False
     while not game_over:
-        game_over=game_events()
-        if game_over:
-            break
-        screen_refresh(screen,clock,background,soldiers)
+        game_over=game_events(soldier)
+        screen_refresh(screen,clock,background,soldier)
 
     pygame.quit()
 
