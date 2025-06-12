@@ -3,6 +3,8 @@ from game_funcionalities import game_events,screen_refresh
 from Media import Background
 from configurations import Configurations
 from Soldier import Soldier
+from pygame.sprite import Group
+from aliens import Aliens
 
 def run_game():
     """Funcion principal del videojuego."""
@@ -23,11 +25,17 @@ def run_game():
     #Se crea el objeto del soldado.
     soldier=Soldier(screen)
 
+    aliens=Aliens(screen)
+    alien=Group()
+
+    alien.add(aliens)
+    shots=Group()
+
     #Ciclo principal del juego.
     game_over=False
     while not game_over:
-        game_over=game_events(soldier)
-        screen_refresh(screen,clock,background,soldier)
+        game_over=game_events(soldier,shots)
+        screen_refresh(screen,clock,background,soldier,shots,alien)
     pygame.quit()
 
 

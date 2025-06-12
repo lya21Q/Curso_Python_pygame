@@ -6,7 +6,7 @@ class Configurations():
     #Tamaño del soldado
     _soldier_block_size=70
     """Fondo de pantalla"""
-    _background_image_path="../media/fondo.png"
+    _background_image_path= "../media/background_image.png"
     """IMAGEN SOLDADO"""
     _soldado_image_path= "../media/soldado.png"
     _game_over_screen_time = 1

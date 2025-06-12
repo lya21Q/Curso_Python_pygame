@@ -2,22 +2,17 @@ import pygame
 from pygame.sprite import Sprite
 from configurations import Configurations
 
-class Soldier(Sprite):
-    def __init__(self,screen:pygame.surface.Surface):
+class Shot(Sprite):
+    def __init__(self,soldier):
         super().__init__()
-        """NUEVO..."""
-        #Banderas de movimiento.
-        self._is_moving_up = False
-        self._is_moving_down = False
 
         """LISTA QUE ALMACENA LOS FRAMES DEL SOLDADO"""
         self._frames=[]
 
         """CAMBIO. Ahora se carga la hoja, en lugar de una única imagen."""
         # Se carga la hoja que contiene los frames del soldado.
-        sheet_path = Configurations.get_soldier_sheet_path()
+        sheet_path = Configurations.get_shot_sheet()
         soldier_sheet = pygame.image.load(sheet_path)
-
         """NUEVO."""
         # Se obtienen los datos para "recortar" cada sprite de la hoja de sprites.
         sheet_frames_per_row = Configurations.get_frames_per_row()
@@ -26,10 +21,9 @@ class Soldier(Sprite):
         soldier_frame_width = sheet_width // sheet_frames_per_row
         soldier_frame_height = sheet_height
 
-
         """NUEVO."""
         # Se obtiene el tamaño para escalar cada frame.
-        soldier_frame_size = Configurations.get_soldier_block_size()
+        soldier_frame_size = Configurations.get_shot_size()
 
         """NUEVO."""
         # Se recortan los sprites de la hoja, se escalan y se guardan en la lista de sprites.
@@ -56,44 +50,20 @@ class Soldier(Sprite):
         #Se obtiene el rectangulo que representa la posicion del sprite
         self.rect = self.image.get_rect()
 
-        screen_rect=screen.get_rect()
-        self.rect.center=screen_rect.center
-        self.rect.right=screen_rect.right
+        screen_rect= soldier.rect
+        self.rect.right = screen_rect.right-145
+        self.rect.centery = screen_rect.centery-10
 
-        """NUEVO."""
-        # Se incluyen los atributos para el movimiento.
-        self._rect_y = float(self.rect.y)
-        self._speed = Configurations.get_soldier_speed()
+        self._rect_x=float(self.rect.x)
+        self.speed=Configurations.get_shot_speed()
 
-    def update_position(self,screen)->None:
-        """
-
-        :return:
-        """
-        # Se obtiene el rectángulo del borde de la pantalla
-        screen_rect=screen.get_rect()
-        if self.is_moving_up:
-            self._rect_y-=self._speed
-        elif self.is_moving_down:
-            self._rect_y+=self._speed
-
-        # Se verifica que el personaje no sobrepase los bordes de la pantalla.
-        if self._rect_y < float(screen_rect.top):
-            self._rect_y = float(screen_rect.y)
-
-        elif self._rect_y > (screen_rect.bottom - self.image.get_height()):
-            self._rect_y = float(screen_rect.bottom - self.image.get_height())
-        # Se actualiza la posición del rectángulo de acuerdo a la posición.
-        self.rect.y = int(self._rect_y)
-
-    """NUEVO."""
-    def update_animation(self) -> None:
+    def shot_animation(self) -> None:
         """
         Se utiliza para actualizar el frame visible del soldado, dando la impresión de animación.
         """
         # Se verifica si el tiempo transcurrido es mayor o igual al tiempo establecido para actualizar el frame.
         current_time = pygame.time.get_ticks()
-        frame_delay = Configurations.get_soldier_frame_delay()
+        frame_delay = Configurations.get_soldier_frames_delay()
         needs_refresh = (current_time - self._last_update_time) >= frame_delay
 
         if needs_refresh:
@@ -107,6 +77,11 @@ class Soldier(Sprite):
             if self._frame_index >= len(self._frames):
                 self._frame_index = 0
 
+                self._frame_index = 0
+    def update_position(self):
+        self.rect.right = self.rect.right-145
+
+
     def blit(self,screen:pygame.surface):
         """
 
@@ -114,19 +89,3 @@ class Soldier(Sprite):
         :return:
         """
         screen.blit(self.image,self.rect)
-
-    @property
-    def is_moving_up(self)->bool:
-        return self._is_moving_up
-
-    @is_moving_up.setter
-    def is_moving_up(self,value:bool)->None:
-        self._is_moving_up=value
-
-    @property
-    def is_moving_down(self):
-        return self._is_moving_down
-
-    @is_moving_down.setter
-    def is_moving_down(self,value:bool)->None:
-        self._is_moving_down=value

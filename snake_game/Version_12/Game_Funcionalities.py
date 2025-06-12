@@ -128,7 +128,7 @@ def check_collision(screen: pygame.surface.Surface,
 
 def screen_refresh(screen: pygame.surface.Surface,
                    clock: pygame.time.Clock,
-                   snake_body: pygame.sprite.Group,apples:pygame.sprite.Group,background:Background,scoreboard:Scoreboard) -> None:
+                   snake_body: pygame.sprite.Group,apples:pygame.sprite.Group,background:Background,scoreboard:Scoreboard,aliens) -> None:
     """
     Función que administrar los elementos visuales del juego
     """

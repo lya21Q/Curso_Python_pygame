@@ -1,4 +1,3 @@
-
 import pygame
 from pygame.sprite import Sprite
 from Configuration import Configurations

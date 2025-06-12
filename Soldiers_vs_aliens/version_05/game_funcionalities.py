@@ -2,8 +2,9 @@ import pygame
 from Media import Background
 from configurations import Configurations
 from Soldier import Soldier
+from shot import Shot
 
-def game_events(soldier:Soldier)->bool:
+def game_events(soldier:Soldier,shot)->bool:
     """
     Función para administrar, los eventos del juego
     :return:
@@ -22,17 +23,24 @@ def game_events(soldier:Soldier)->bool:
                 soldier.is_moving_up = True
             if event.key == pygame.K_DOWN:
                 soldier.is_moving_down = True
+
+            if event.key==pygame.K_SPACE:
+                new_shot=Shot(soldier)
+                shot.add(new_shot)
+                soldier.shoots()
+
         if event.type==pygame.KEYUP:
             if event.key==pygame.K_UP:
                 soldier.is_moving_up=False
             if event.key==pygame.K_DOWN:
                 soldier.is_moving_down=False
 
+
     return game_over
 
 def screen_refresh(screen: pygame.surface.Surface,
                    clock:pygame.time.Clock,
-                   background:Background,soldier:Soldier) -> None:
+                   background:Background,soldier:Soldier,shot) -> None:
     """
     Función que administra las funcionalidades.
     :param screen:
@@ -42,9 +50,12 @@ def screen_refresh(screen: pygame.surface.Surface,
     background.blit(screen)
     # Se actualiza la posición del soldado, se anima su sprite y se dibuja en la pantalla.
     soldier.update_position(screen)
-    soldier.update_animation=()
+    soldier.update_animation()
     soldier.blit(screen)
-
+    for i in shot.sprites():
+        i.blit(screen)
+        i.shot_animation()
+        i.update_position()
     # Se actualiza la pantalla, dando la impresión de movimiento.
     pygame.display.flip()
 

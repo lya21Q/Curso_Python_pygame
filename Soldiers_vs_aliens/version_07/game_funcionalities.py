@@ -2,8 +2,11 @@ import pygame
 from Media import Background
 from configurations import Configurations
 from Soldier import Soldier
+from shot import Shot
+from aliens import Aliens
+from random import random
 
-def game_events(soldier:Soldier)->bool:
+def game_events(soldier:Soldier,shot:pygame.sprite.Group)->bool:
     """
     Función para administrar, los eventos del juego
     :return:
@@ -20,8 +23,13 @@ def game_events(soldier:Soldier)->bool:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP:
                 soldier.is_moving_up = True
+            """Se llama al metodo shot()"""
             if event.key == pygame.K_DOWN:
                 soldier.is_moving_down = True
+            if event.key==pygame.K_SPACE:
+                new_shot=Shot(soldier)
+                shot.add(new_shot)
+                soldier.shoots()
         if event.type==pygame.KEYUP:
             if event.key==pygame.K_UP:
                 soldier.is_moving_up=False
@@ -32,7 +40,7 @@ def game_events(soldier:Soldier)->bool:
 
 def screen_refresh(screen: pygame.surface.Surface,
                    clock:pygame.time.Clock,
-                   background:Background,soldier:Soldier) -> None:
+                   background:Background,soldier:Soldier,shot,aliens) -> None:
     """
     Función que administra las funcionalidades.
     :param screen:
@@ -42,9 +50,18 @@ def screen_refresh(screen: pygame.surface.Surface,
     background.blit(screen)
     # Se actualiza la posición del soldado, se anima su sprite y se dibuja en la pantalla.
     soldier.update_position(screen)
-    soldier.update_animation=()
+    soldier.update_animation()
     soldier.blit(screen)
 
+    for alien in aliens.sprites():
+        alien.blit(screen)
+        alien.aliens_update_animation()
+        alien.alien_position()
+
+    for i in shot.sprites():
+        i.blit(screen)
+        i.shot_update_animation()
+        i.update_position()
     # Se actualiza la pantalla, dando la impresión de movimiento.
     pygame.display.flip()
 
